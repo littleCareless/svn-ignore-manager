@@ -1,18 +1,26 @@
 {
   "name": "svn-ignore-manager",
   "displayName": "SVN Ignore Manager",
-  "description": "\"SVN Ignore Manager 是一个 VSCode 插件，用于简化 SVN 忽略规则的管理。通过自动化设置全局忽略规则和处理忽略的文件或目录，帮助你更高效地管理 SVN 项目。\"",
-  "version": "0.0.1",
+  "description": "一个强大的 SVN 忽略规则管理工具，支持可视化操作，让 SVN 忽略文件管理变得简单高效。",
+  "version": "1.0.1",
   "publisher": "littleCareless",
   "engines": {
     "vscode": "^1.91.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/littleCareless/personalGuidePage"
+    "url": "https://github.com/littleCareless/svn-ignore-manager"
   },
+  "keywords": [
+    "svn",
+    "ignore",
+    "svn-ignore",
+    "version control",
+    "productivity"
+  ],
   "categories": [
-    "Other"
+    "Other",
+    "SCM Providers"
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
@@ -20,11 +28,11 @@
     "commands": [
       {
         "command": "extension.runSVNScript",
-        "title": "Run SVN Script"
+        "title": "SVN: 运行忽略规则管理脚本"
       },
       {
         "command": "extension.ignore",
-        "title": "在 SVN 中忽略的文件/文件夹（svn：ignore）"
+        "title": "SVN: 添加到忽略列表"
       }
     ],
     "menus": {

@@ -1,106 +1,80 @@
 # SVN Ignore Manager
 
-**SVN Ignore Manager** 是一个用于管理 SVN 忽略规则的 VS Code 插件。它帮助你创建和维护 `.svnignore` 文件，并将忽略规则应用到 SVN 配置中。此插件提供了一些实用的命令来简化 SVN 忽略规则的管理。
+**SVN Ignore Manager** 是一个专门为 SVN 用户设计的 VS Code 插件，用于简化 SVN 忽略规则的管理。通过可视化界面和命令行操作，帮助你轻松管理需要忽略的文件和文件夹，无需手动编辑 SVN 配置文件。
 
-## 功能
+## 主要特性
 
-- **创建或检查 `.svnignore` 文件**：确保 `.svnignore` 文件存在并初始化。
-- **清除和设置全局忽略配置**：管理 SVN 的全局忽略配置。
-- **从 `.svnignore` 文件中导入忽略规则**：将忽略规则应用到 SVN 配置中。
-- **显示当前的忽略规则**：查看当前 SVN 忽略规则。
-- **检查被忽略的文件和目录**：检查哪些文件和目录被忽略。
-- **从版本控制中移除文件或目录，但保留本地副本**：从版本控制中删除忽略的项目，但保留本地副本。
-- **提交更改**：提交对版本控制的更改。
+- 🚀 **可视化忽略文件管理**：右键点击文件或文件夹即可添加到忽略列表
+- 📝 **自动创建和维护**：自动处理 `.svnignore` 文件的创建和更新
+- 🔄 **批量操作支持**：可以同时处理多个文件和文件夹
+- 🎯 **智能规则应用**：自动将忽略规则应用到 SVN 配置中
+- 📊 **状态查看**：随时查看当前的忽略规则和被忽略的文件
+- 🛠️ **配置灵活**：通过 VS Code 设置面板轻松调整插件行为
 
 ## 安装
 
-1. **从 VS Code 市场安装**：
+1. **VS Code 市场安装**：
 
-   - 打开 VS Code。
-   - 转到扩展视图（侧边栏的四个方块图标）。
-   - 搜索 **SVN Ignore Manager**。
-   - 点击“安装”按钮。
+   - 打开 VS Code
+   - 按下 `Ctrl+P` 或 `Cmd+P`
+   - 输入 `ext install svn-ignore-manager`
 
-2. **从源代码安装**：
+2. **手动安装**：
+   ```bash
+   git clone https://github.com/your-username/svn-ignore-manager.git
+   cd svn-ignore-manager
+   npm install
+   vsce package
+   ```
 
-   - 克隆这个仓库：
+## 使用方法
 
-     ```bash
-     git clone https://github.com/littleCareless/svn-ignore-manager.git
-     ```
+### 1. 通过右键菜单添加忽略
 
-   - 进入插件目录：
+1. 在资源管理器中右键点击要忽略的文件或文件夹
+2. 选择 "Ignore" 选项
+3. 确认操作后，文件将被添加到忽略列表
 
-     ```bash
-     cd svn-ignore-manager
-     ```
+### 2. 通过命令面板操作
 
-   - 安装依赖：
+1. 按下 `Ctrl+Shift+P`（Windows/Linux）或 `Cmd+Shift+P`（macOS）
+2. 输入 "Run SVN Script"
+3. 选择相应的命令执行 SVN 忽略操作
 
-     ```bash
-     npm install
-     ```
+## 设置选项
 
-   - 打包插件：
+打开 VS Code 设置（`Ctrl+,`），搜索 "svnIgnoreManager"：
 
-     ```bash
-     vsce package
-     ```
+- `svnIgnoreManager.runChecks`: 启动时检查配置文件
+- `svnIgnoreManager.clearGlobalIgnores`: 清理全局忽略规则
+- `svnIgnoreManager.importIgnoreRules`: 自动导入规则
+- `svnIgnoreManager.displayIgnoreRules`: 显示当前规则
 
-   - 从 VS Code 中安装生成的 `.vsix` 文件。
+## 常见问题
 
-## 使用
+**Q: 为什么有些文件没有被正确忽略？**
+A: 确保文件路径正确，并且已经执行了 "Run SVN Script" 命令应用更改。
 
-在 VS Code 中安装并启用插件后，你可以通过以下命令来操作插件：
+**Q: 如何移除已添加的忽略规则？**
+A: 直接编辑 `.svnignore` 文件，删除对应的规则，然后运行 "Run SVN Script" 更新。
 
-1. **添加文件到 `.svnignore`**：
+## 贡献指南
 
-   右键点击文件或文件夹，选择 `Ignore` 命令将其添加到 `.svnignore` 文件中。
+欢迎提交 Pull Requests 和 Issues！请确保：
 
-2. **运行 SVN 脚本**：
-
-   - 打开命令面板（`Ctrl+Shift+P` 或 `Cmd+Shift+P`）。
-   - 输入 `Run SVN Script` 并选择该命令。
-   - 插件会自动执行 SVN 操作，并显示输出面板。
-
-## 配置
-
-在 VS Code 的设置中，你可以配置插件的行为。打开设置（`Ctrl+,` 或 `Cmd+,`），并查找 `svnIgnoreManager`。以下是可配置的选项：
-
-- **runChecks**: 是否检查 `.svnignore` 文件。
-- **clearGlobalIgnores**: 是否清除全局忽略配置。
-- **setGlobalIgnores**: 是否设置全局忽略配置。
-- **importIgnoreRules**: 是否从 `.svnignore` 文件中导入忽略规则。
-- **displayIgnoreRules**: 是否显示当前的忽略规则。
-- **checkIgnoredFiles**: 是否检查被忽略的文件和目录。
-- **removeFromVersionControl**: 是否从版本控制中移除忽略的文件或目录。
-- **commitChanges**: 是否提交更改。
-
-## 常见问题解答
-
-### 问题 1
-
-**问：** 插件在我的环境中不起作用，怎么办？
-
-**答：** 确保你已按照 [安装说明](#安装) 正确安装插件。如果问题仍然存在，请查看 [问题跟踪](https://github.com/littleCareless/svn-ignore-manager/issues) 或者联系支持团队。
-
-### 问题 2
-
-**问：** 如何卸载插件？
-
-**答：** 在 VS Code 的扩展视图中，找到插件，点击“卸载”按钮。
-
-## 贡献
-
-欢迎你为插件做出贡献！请参阅 [贡献指南](CONTRIBUTING.md) 了解如何参与项目。
+1. 遵循现有的代码风格
+2. 添加适当的测试
+3. 更新相关文档
 
 ## 许可证
 
-插件遵循 [MIT 许可证](LICENSE) 开源许可协议。请参阅 [许可证文件](LICENSE) 了解更多信息。
+MIT License - 详见 [LICENSE](LICENSE) 文件
 
-## 联系信息
+## 支持与反馈
 
-如果你有任何问题或建议，请通过以下方式联系我：
+- 提交 Issue: [GitHub Issues](https://github.com/your-username/svn-ignore-manager/issues)
+- 邮件联系: your-email@example.com
 
-- **电子邮件**：your-email@example.com
-- **GitHub Issues**： [插件问题跟踪](https://github.com/littleCareless/svn-ignore-manager/issues)
+---
+
+💡 提示：首次使用请确保您的系统已正确安装 SVN 命令行工具。
