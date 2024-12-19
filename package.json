@@ -1,0 +1,114 @@
+{
+  "name": "svn-ignore-manager",
+  "displayName": "SVN Ignore Manager",
+  "description": "\"SVN Ignore Manager 是一个 VSCode 插件，用于简化 SVN 忽略规则的管理。通过自动化设置全局忽略规则和处理忽略的文件或目录，帮助你更高效地管理 SVN 项目。\"",
+  "version": "0.0.1",
+  "publisher": "littleCareless",
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/littleCareless/personalGuidePage"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.runSVNScript",
+        "title": "Run SVN Script"
+      },
+      {
+        "command": "extension.ignore",
+        "title": "在 SVN 中忽略的文件/文件夹（svn：ignore）"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.ignore",
+          "group": "group1"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "properties": {
+        "svnIgnoreManager.runChecks": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用或禁用运行检查。"
+        },
+        "svnIgnoreManager.clearGlobalIgnores": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用或禁用清除全局忽略。"
+        },
+        "svnIgnoreManager.setGlobalIgnores": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用或禁用设置全局忽略。"
+        },
+        "svnIgnoreManager.importIgnoreRules": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用或禁用导入忽略规则。"
+        },
+        "svnIgnoreManager.displayIgnoreRules": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用或禁用显示忽略规则。"
+        },
+        "svnIgnoreManager.checkIgnoredFiles": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用或禁用检查被忽略的文件。"
+        },
+        "svnIgnoreManager.removeFromVersionControl": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用或禁用从版本控制中移除文件或目录。"
+        },
+        "svnIgnoreManager.commitChanges": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用或禁用提交更改。"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run package",
+    "compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "pnpm run check-types && pnpm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.91.0",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.11.0",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0",
+    "esbuild": "^0.21.5",
+    "eslint": "^8.57.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@vscode/vsce": "^2.31.1"
+  }
+}
